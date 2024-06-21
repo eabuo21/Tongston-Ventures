@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Barier from "../../assets/Icons/barrier.png";
+import Barrier from "../../assets/Icons/barrier.png"; // Ensure the case matches your actual file name
 import { Link } from "react-router-dom";
 import TeesAppForm from "./TeesAppForm";
+import TessFlyer from "../../assets/images/TEES Pitches Flyer.png";
 
 const TeesModal = ({ onClose }) => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const TeesModal = ({ onClose }) => {
   }, []);
 
   // state to handle the application form
-  const [showform, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const openForm = () => {
     setShowForm(true);
   };
@@ -22,35 +23,40 @@ const TeesModal = ({ onClose }) => {
   };
 
   return (
-    <div className="inset-0  z-50  w-full bg-black bg-opacity-60 flex flex-col justify-center items-center fixed">
-      <div className="bg-white w-[350px]  inset-0   z-50  h-[350px]   rounded-md flex flex-col justify-start items-center shadow-md   md:h-[400px] md:w-[500px]">
+    <div className="inset-0 z-50 w-full bg-black bg-opacity-60 flex flex-col justify-center items-center fixed">
+      <div
+        className="bg-white  relative w-[350px] inset-0 z-50 h-[fixed] p-3 rounded-md  overflow-y-auto flex flex-col justify-start items-center shadow-md md:h-[550px] md:w-[500px]"
+        style={{
+          background: `url(${TessFlyer}) no-repeat center center / cover`,
+        }}
+      >
         <button
           onClick={onClose}
-          className=" flex  ml-auto  mr-4  p-3 text-dark   text-xl"
+          className="flex ml-auto mr-4 p-3 text-dark text-xl"
         >
           close
         </button>
 
-        <div className="flex flex-col gap-8 justify-center items-center p-2 ">
-          <img src={Barier} alt="event-icon" className="w-[120px]  h-[120px]" />
+        <div className="flex flex-col gap-2  justify-center items-center p-2 w-full">
+          <img
+            src={TessFlyer}
+            alt="tees-flyer"
+            className="w-full h-[350px] relative"
+          />
           <h3 className="text-red font-bold text-center text-2xl font-fan ">
-            Register For T<span className="text-dark">EE</span>S{" "}
+            Pitch For Investment @ T<span className="text-dark">EE</span>S{" "}
             <span className="text-dark">2</span>02
             <span className="text-dark">4</span>
           </h3>
         </div>
         <button
-          onClick={() => openForm()}
-          className="hover-effect  bg-red p-3 text-white font-bold flex justify-center items-center tex-center  w-[200px]  h-[70px]   md:h-[40px] md:w-[120px]   hover:transition-all hover:ease-in-out hover:duration-1000 
-            ease-in-out transition-all duration-1000  hover:text-white "
+          onClick={openForm}
+          className="hover-effect bg-red p-3 text-white font-bold flex justify-center items-center tex-center   h-[78px] w-[250px] md:w-[350px] px-2  hover:transition-all hover:ease-in-out hover:duration-1000 ease-in-out transition-all duration-1000 hover:text-white"
         >
-            <p className="image-wrapper">
-          Register
-          </p>
+          <p className="image-wrapper">Register</p>
         </button>
-        
-        {showform && <TeesAppForm onClose={() => closeForm((onClose))} />}
-            
+
+        {showForm && <TeesAppForm onClose={closeForm} />}
       </div>
     </div>
   );
