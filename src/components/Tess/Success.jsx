@@ -24,11 +24,11 @@ function Successful() {
       <img
         src={Successgif}
         alt="success-gif"
-        className="w-auto h-auto mx-auto flex justify-center items-center"
+        className="w-[300px] h-[250px] mx-auto flex justify-center items-center"
       />
-      <h4 className="thanks-text text-green-800 font-bold relative bottom-[3rem] font-serif text-2xl text-center">
-        Thanks For Subscribing
-      </h4>
+      <p className="thanks-text text-green-800 font-bold relative bottom-[3rem] font-serif text-2xl text-center">
+        
+      </p>
     </div>
   );
 }
