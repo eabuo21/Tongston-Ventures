@@ -396,7 +396,7 @@ const TeesAppForm = ({ onClose }) => {
 
           <label className=" mr-auto flex flex-col gap-2">
             <p className="text-dark text-sm    ">
-              Please select the sector that most most closely aligns with your
+              Please select the sector that most closely aligns with your
               business
             </p>
             <Dropdown
