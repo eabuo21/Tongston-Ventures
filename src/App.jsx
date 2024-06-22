@@ -169,9 +169,9 @@ function App() {
             <Route path="/success" element={<Success />} />
           </Routes>
 
-          <section className="footer-section w-full ">
+          {/* <section className="footer-section w-full ">
             <Footer />
-          </section>
+          </section> */}
           <ToastContainer />
         </>
       )}
