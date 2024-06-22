@@ -73,8 +73,8 @@ const TeesAppForm = ({ onClose }) => {
         first_name: values.first_name,
         last_name: values.last_name,
         email: values.email,
-        primary_state: "",
-        primary_country: "",
+        primary_state: values.primary_state,
+        primary_country: values.primary_country,
         biz_name: values.biz_name,
         dropdown_1: values.dropdown_1,
         dropdown_2: values.dropdown_2,
@@ -396,7 +396,7 @@ const TeesAppForm = ({ onClose }) => {
 
           <label className=" mr-auto flex flex-col gap-2">
             <p className="text-dark text-sm    ">
-              Please select the sector that most most closely aligns with your
+              Please select the sector that most  closely aligns with your
               business
             </p>
             <Dropdown
