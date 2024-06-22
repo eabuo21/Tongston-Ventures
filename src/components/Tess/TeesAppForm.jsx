@@ -6,6 +6,7 @@ import {
   showErrorNotification,
 } from "../Notification/Notification";
 import validation from "./Validate";
+import Flyer from "../../assets/images/TEES Pitches Flyer.png";
 
 const Dropdown = ({ name, options, value, onChange, error }) => (
   <div>
@@ -302,7 +303,7 @@ const TeesAppForm = ({ onClose }) => {
   // Define more dropdown options as needed...
 
   return (
-    <div className="flex flex-col inset-0 bg-black z-50 w-full h-full justify-center items-center fixed">
+    <div className="flex flex-col inset-0 bg-black bg-opacity-84 z-50 w-full h-full justify-center items-center fixed">
       <div className="bg-white w-[300px] h-[300px] inset-0 z-50 flex flex-col gap-4 justify-start items-center md:w-[800px] md:h-[450px] p-4 overflow-y-auto">
         <button onClick={onClose} className="text-dark text-xl mx-auto mr-5">
           Close
