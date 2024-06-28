@@ -20,6 +20,7 @@ const TeesModal = ({ onClose }) => {
   };
   const closeForm = () => {
     setShowForm(false);
+    onClose();
   };
 
   return (
@@ -50,10 +51,10 @@ const TeesModal = ({ onClose }) => {
           </h3>
         </div>
         <button
-          onClick={openForm}
+          onClick={openForm} 
           className="hover-effect bg-red p-3 text-white font-bold flex justify-center items-center tex-center   h-[78px] w-[250px] md:w-[350px] px-2  hover:transition-all hover:ease-in-out hover:duration-1000 ease-in-out transition-all duration-1000 hover:text-white"
         >
-          <p className="image-wrapper">Register</p>
+          <p className="image-wrapper">Pitch</p>
         </button>
 
         {showForm && <TeesAppForm onClose={closeForm} />}
