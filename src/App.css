@@ -42,7 +42,9 @@
 /*SMOOTH FADE-IN ON PAGE ENTER ANIMATION */
 
 .main,
-.form-container {
+.form-container,
+.failed-container,
+.failed-container {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -144,6 +146,7 @@ custom styling for dots
   background-color: #fff;
   max-height: 150px; /* Adjust the max height as needed */
   overflow-y: auto;
+  padding: 2px;
 }
 
 .dropdown-option {

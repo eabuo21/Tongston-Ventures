@@ -4,8 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import Investment from "./pages/Investment";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+
 import Business from "./pages/Business";
 import { ToastContainer } from "react-toastify";
 import { GridLoader } from "react-spinners";
@@ -14,25 +13,30 @@ import Success from "./components/Tess/Success";
 import Applications from "./components/Tess/Applications";
 import Ineligible from "./components/Tess/Ineligible";
 
+const HASHED_INELIGIBLE_ROUTE =
+  "d8e23981a7d2de3c0f3a2d3f02f823b7a514889a04ec843d0907f10b0389bc2a";
+const HASHED_APPLICATIONS_ROUTE =
+  "56f1c75521d58a3b4cc7c05615353673a2e1f55d5e5aaed0e1c9915a3a64d47e";
+
+const HASHED_SUCCESS_ROUTE =
+  "4fbdce769f4bfaa74c9f5fc9e593e3a7bf781f64bf16fb1b9b2a3a4466795373";
+
 function App() {
-  // Function to toggle tees modal open on page enter
   const [isModalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const closeModal = () => {
     setModalOpen(false);
+    sessionStorage.setItem("teesModalShown", "true");
   };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setModalOpen(true);
-    }, 7000); // 7 minutes in milliseconds
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  const [loading, setLoading] = useState(true);
+  const simulateWebsiteLoading = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 1500);
+    });
+  };
 
   useEffect(() => {
     simulateWebsiteLoading()
@@ -45,13 +49,18 @@ function App() {
       });
   }, []);
 
-  const simulateWebsiteLoading = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve();
-      }, 1500);
-    });
-  };
+  useEffect(() => {
+    const teesModalShown = sessionStorage.getItem("teesModalShown");
+    if (!teesModalShown) {
+      const timeout = setTimeout(() => {
+        setModalOpen(true);
+      }, 7000); // 7 seconds in milliseconds
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -75,9 +84,15 @@ function App() {
             <Route path="/investment" element={<Investment />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/business" element={<Business />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/applications" element={<Applications />} />
-            <Route path="/:!_*$_/" element={<Ineligible />} />
+            <Route path={`/${HASHED_SUCCESS_ROUTE}`} element={<Success />} />
+            <Route
+              path={`/${HASHED_APPLICATIONS_ROUTE}`}
+              element={<Applications />}
+            />
+            <Route
+              path={`/${HASHED_INELIGIBLE_ROUTE}`}
+              element={<Ineligible />}
+            />
           </Routes>
           <ToastContainer />
         </>

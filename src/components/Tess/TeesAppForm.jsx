@@ -4,32 +4,21 @@ import {
   showErrorNotification,
   showSuccessNotification,
 } from "../Notification/Notification";
-import { RingLoader } from "react-spinners";
+import { CircleLoader } from "react-spinners";
+import emailjs from "@emailjs/browser";
 
 function MyForm({ onClose }) {
   //function to disable scroll on modal toggle
   useEffect(() => {}, []);
 
-  const navigate = useNavigate();
-  const [checked, setChecked] = useState({
-    chk1: false,
-    chk2: false,
-    chk3: false,
-    chk4: false,
-    chk5: false,
-    chk6: false,
-    chk7: false,
-    chk8: false,
-    chk9: false,
-  });
+  //hashing the routes
+  const HASHED_INELIGIBLE_ROUTE =
+    "d8e23981a7d2de3c0f3a2d3f02f823b7a514889a04ec843d0907f10b0389bc2a";
+  const HASHED_APPLICATIONS_ROUTE =
+    "56f1c75521d58a3b4cc7c05615353673a2e1f55d5e5aaed0e1c9915a3a64d47e";
 
-  const checkChange = (event) => {
-    const { id, checked } = event.target;
-    setChecked((prev) => ({
-      ...prev,
-      [id]: checked,
-    }));
-  };
+  const navigate = useNavigate();
+  const [checked, setChecked] = useState(false);
 
   //declaration  for the important values
   const [selectedOption2, setSelectedOption2] = useState("");
@@ -178,9 +167,72 @@ function MyForm({ onClose }) {
     ],
   };
 
+  //keys
+  const Service_Id = "service_z3uzwhg";
+  const Template_Id = "template_ald6wyj";
+  const Api_Key = "CDmJ3huYpinZb0wEA";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
+
+    //function to send message using email js
+    const templateParams = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      primary_currency: values.primary_currency,
+      business_name: values.business_name,
+      dropdown_1: values.dropdown_1,
+      dropdown_6: values.dropdown_6,
+      selectedOption2: selectedOption2,
+      selectedOption3: selectedOption3,
+      selectedOption4: selectedOption4,
+      selectedOption5: selectedOption5,
+      selectedOption7: selectedOption7,
+      selectedOption8: selectedOption8,
+    };
+
+    emailjs
+      .send(Service_Id, Template_Id, templateParams, Api_Key)
+
+      .then((response) => {
+        if (response.status === 200) {
+          setValues({
+            first_name: "",
+            last_name: "",
+            email: "",
+
+            business_name: "",
+            dropdown_1: "",
+            dropdown_6: "",
+          });
+          setSelectedOption2("");
+          setSelectedOption3("");
+          setSelectedOption4("");
+          setSelectedOption5("");
+          setSelectedOption7("");
+          setSelectedOption8("");
+
+          setLoadingMessage(true);
+        } else {
+          alert("failed  please try again");
+
+          setLoadingMessage(false);
+        }
+      })
+      .catch((error) => {
+        setLoadingMessage(false);
+        setLoading(false);
+        alert("Check Network Connection");
+
+        if (response.status === 500) {
+          console.log(error, "error");
+        } else {
+          console.log(success, "success");
+        }
+      });
+
     //initialize the loading messages
     setLoadingMessage(loadingMessages[0]);
     const selectedImportantOptions = [
@@ -205,36 +257,44 @@ function MyForm({ onClose }) {
           setLoading(false);
           showSuccessNotification("You're Eligible to Apply");
           onClose();
-          navigate("/applications");
+          navigate(`/${HASHED_APPLICATIONS_ROUTE}`);
         } else {
           setLoading(false);
           showErrorNotification("You're Ineligible to Apply");
           onClose();
-          navigate("/:!_*$_/");
+          navigate(`/${HASHED_INELIGIBLE_ROUTE}`);
         }
       }
     }, 5000); // update the  loading message every 5 seconds
   };
 
   //check if the boxes have been checked by user
-  const allCheckboxesChecked = Object.values(checked).every(Boolean);
 
   return (
     <div className="flex flex-col inset-0 bg-black bg-opacity-84 z-50 w-full h-full justify-center items-center fixed">
-      <div className="bg-white w-[360px] h-[fixed] inset-0 z-50 flex flex-col gap-4 justify-start items-center md:w-[900px] md:h-[550px] p-4 overflow-y-auto">
+      <div
+        data-aos="fade-down"
+        data-aos-easing="ease-in linear"
+        data-aos-duration="1500"
+        data-aos-once="true"
+        data-aos-mirror="true"
+        data-aos-anchor-placement="top-bottom"
+        className="bg-white w-[360px] h-[fixed] inset-0 z-50 flex flex-col gap-4 justify-start items-center md:w-[900px] md:h-[550px] p-4 overflow-y-auto"
+      >
         <h6 className="text-center text-base text-black font-bold  md:text-xl">
-          TEES 2024 Entrepreneurial Pitches Eligibility Check
+          <span className="text-red"> TEES 2024 </span>Entrepreneurial Pitches
+          Eligibility Check
         </h6>
         <button onClick={onClose} className="text-dark text-xl mx-auto mr-5">
           Close
         </button>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-6 justify-center items-center w-full md:gap-7 md:justify-center md:items-center  md:px-8 md:grid md:grid-cols-3 "
+          className="flex flex-col gap-6 justify-center items-center w-full md:gap-7 md:justify-center md:items-center  md:px-8 md:grid md:grid-cols-2 "
         >
           {/* text-inputs and other option1 and option2 */}
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">First Name</p>
             <input
               type="text"
@@ -243,11 +303,11 @@ function MyForm({ onClose }) {
               onChange={valuesChange}
               placeholder="Enter your First Name"
               required
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
             />
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">Last Name</p>
             <input
               type="text"
@@ -256,11 +316,11 @@ function MyForm({ onClose }) {
               onChange={valuesChange}
               placeholder="Last Name"
               required
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
             />
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">Email Address</p>
             <input
               type="email"
@@ -269,14 +329,14 @@ function MyForm({ onClose }) {
               onChange={valuesChange}
               placeholder="Email Address"
               required
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
             />
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">How Did You Hear About Us?</p>
             <select
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               name="dropdown_1"
               onChange={valuesChange}
               value={values.dropdown_1}
@@ -309,29 +369,29 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
               What is the name of the Business?
             </p>
             <input
               type="text"
-              name="biz_name"
-              value={values.biz_name}
+              name="business_name"
+              value={values.business_name}
               onChange={valuesChange}
               placeholder="Name of Business"
               required
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
             />
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              What is Your Current role in The Business?
+              What is Your Current role in the Business?
             </p>
             <select
               value={selectedOption2}
               onChange={(event) => setSelectedOption2(event.target.value)}
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-full md:w-[200px] px-2 focus:outline-none "
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               required
             >
               <option value="" disabled>
@@ -350,15 +410,15 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
               Please select the sector that most closely aligns with your
-              business
+              Business
             </p>
             <select
               value={selectedOption3}
               onChange={(event) => setSelectedOption3(event.target.value)}
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               required
             >
               <option value="" disabled>
@@ -374,14 +434,14 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              Where is the primary Country of operation for The Business?
+              Where is the primary Country of operation for the Business?
             </p>
             <select
               value={selectedOption4}
               onChange={(event) => setSelectedOption4(event.target.value)}
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               required
             >
               <option value="" disabled>
@@ -397,7 +457,7 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          {/* <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
               Where is the primary state of operation for The Business?
             </p>
@@ -408,18 +468,18 @@ function MyForm({ onClose }) {
               onChange={valuesChange}
               placeholder="Primary State of Operation"
               required
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
             />
-          </label>
+          </label> */}
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              What stage would you consider the business?
+              What stage would you consider the Business?
             </p>
             <select
               value={selectedOption5}
               onChange={(event) => setSelectedOption5(event.target.value)}
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               required
             >
               <option value="" disabled>
@@ -437,15 +497,15 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              What Revenues/Sales did you achieve in the business in 2023 as at
+              What Revenues/Sales did you achieve in the Business in 2023 as at
               (3oth December 2023)?
             </p>
             <select
               value={selectedOption7}
               onChange={(event) => setSelectedOption7(event.target.value)}
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               required
             >
               <option value="" disabled>
@@ -460,13 +520,13 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
               Please select the currency of your business operations what
-              represents the sales/revenue range you selected above{" "}
+              represents the sales/revenue range you selected
             </p>
             <select
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               name="primary_currency"
               onChange={valuesChange}
               value={values.primary_currency}
@@ -496,15 +556,15 @@ function MyForm({ onClose }) {
             </select>
           </label>
 
-          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-[200px]">
+          <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              Please select the united Nations Sustainable Development Goals (UN
-              SDGs) that your business is addressing{" "}
+              Please select the United Nations Sustainable Development Goals (UN
+              SDGs) that your Business is addressing{" "}
             </p>
             <select
               value={selectedOption8}
               onChange={(event) => setSelectedOption8(event.target.value)}
-              className="border-l-2 border-red border-b-2 border-b-dark h-[20px] w-[300px] md:w-[200px] px-2 focus:outline-none"
+              className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               required
             >
               <option value="" disabled>
@@ -523,171 +583,52 @@ function MyForm({ onClose }) {
           {/* concent declaration */}
           <label
             htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
+            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-full"
           >
             <input
               type="checkbox"
               id="chk1"
-              checked={checked.chk1}
-              onChange={checkChange}
+              checked={checked}
+              onChange={() => setChecked(!checked)}
               className=" cursor-pointer"
             />
-            <p>
+            <p className="h-[400px] overflow-y-auto     md:h-[200px] text-base p-2">
               I hereby declare and confirm the following statements in relation
               to my submission for the TEES 2024 Entrepreneurial Pitches
               eligibility check: 1. I affirm that I am the rightful owner of all
               intellectual property associated with my submission, and I have
               the authority to submit it for consideration.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk2"
-              checked={checked.chk2}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I certify that my responses do not violate any sanctions, laws, or
-              legislations in my jurisdiction, the Federal Republic of Nigeria,
-              or any other jurisdiction worldwide.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk3"
-              checked={checked.chk3}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I certify that my responses do not violate any sanctions, laws, or
-              legislations in my jurisdiction, the Federal Republic of Nigeria,
-              or any other jurisdiction worldwide.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk4"
-              checked={checked.chk4}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I understand that failure to follow the instructions strictly may
-              lead to disqualification.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk5"
-              checked={checked.chk5}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I have the necessary authority to submit answers to this
+              <br />I certify that my responses do not violate any sanctions,
+              laws, or legislations in my jurisdiction, the Federal Republic of
+              Nigeria, or any other jurisdiction worldwide.
+              <br />I certify that my responses do not violate any sanctions,
+              laws, or legislations in my jurisdiction, the Federal Republic of
+              Nigeria, or any other jurisdiction worldwide.
+              <br />I understand that failure to follow the instructions
+              strictly may lead to disqualification.
+              <br />I have the necessary authority to submit answers to this
               eligibility check on behalf of the organization herewith named in
               this submission.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk6"
-              checked={checked.chk6}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I confirm that the business herewith mentioned does not negatively
-              impact any of the 17 sustainable development goals (SDGs).
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk7"
-              checked={checked.chk7}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I confirm that my responses are true and correct, and I have not
-              misrepresented.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk8"
-              checked={checked.chk8}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I confirm that I understand that I may not progress to the
+              <br />I confirm that the business herewith mentioned does not
+              negatively impact any of the 17 sustainable development goals
+              (SDGs).
+              <br />I confirm that my responses are true and correct, and I have
+              not misrepresented.
+              <br />I confirm that I understand that I may not progress to the
               application form if I fail to pass the eligibility check, and that
               Tongston does not owe me a right of reply or appeal.
-            </p>
-          </label>
-
-          <label
-            htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-[220px]"
-          >
-            <input
-              type="checkbox"
-              id="chk9"
-              checked={checked.chk9}
-              onChange={checkChange}
-              className=" cursor-pointer"
-            />
-            <p>
-              I confirm that I may only submit responses to the eligibility
-              check once for every business.
+              <br />I confirm that I may only submit responses to the
+              eligibility check once for every business
             </p>
           </label>
 
           <button
-            className={`hover-effect bg-red text-white h-[40px] w-full md:w-[300pxx] px-2  ${
-              !allCheckboxesChecked &&
-              "cursor-not-allowed bg-gray-500 hover-bg-transparent"
+            className={` bg-red text-white h-[40px] w-full md:w-[200px] px-2  ${
+              !checked &&
+              "cursor-not-allowed bg-gray-500  bg-opacity-60 hover-bg-transparent"
             }`}
             type="submit"
-            disabled={!allCheckboxesChecked}
+            disabled={!checked}
           >
             <p className="image-wrapper">Check Status</p>
           </button>
@@ -696,7 +637,7 @@ function MyForm({ onClose }) {
       {loading && (
         <div className="bg-transparent w-full  bg-opacity-0 fixed inset-0 z-50 flex flex-col gap-4 justify-center p-2 items-center md:w-full  overflow-y-auto">
           <div className=" bg-white flex flex-col gap-3 justify-center items-center w-[1000px]      h-[500px]       inset-0 z-50   rounded-md items-center  md:h-[700px] p-4 overflow-y-auto">
-            <RingLoader color="red" loading={loading} size={90} />
+            <CircleLoader color="red" loading={loading} size={90} />
             <p className="text-black text-center text-xl animate-pulse md:text-2xl">
               {loadingMessage}
             </p>
