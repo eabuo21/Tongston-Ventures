@@ -4,10 +4,10 @@ import "./App.css";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import Investment from "./pages/Investment";
-
+import ErrorPage from "./pages/404";
 import Business from "./pages/Business";
 import { ToastContainer } from "react-toastify";
-import { GridLoader } from "react-spinners";
+import { CircleLoader } from "react-spinners";
 import TeesModal from "./components/Tess/TeesModal";
 import Success from "./components/Tess/Success";
 import Applications from "./components/Tess/Applications";
@@ -34,7 +34,7 @@ function App() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve();
-      }, 1500);
+      }, 2000);
     });
   };
 
@@ -65,13 +65,16 @@ function App() {
   return (
     <div className="App">
       {loading ? (
-        <div className="loader-container flex justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 h-[100vh]">
-          <GridLoader
+        <div className="loader-container flex  flex-col justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 h-[100vh]">
+          <CircleLoader
             color={"red"}
             loading={true}
-            size={30}
-            speedMultiplier={0.5}
+            size={60}
+            speedMultiplier={0.3}
           />
+          <h7 className="text-red font-bold font-ger text-center">
+            Tongston <span className="text-black">Ventures</span>
+          </h7>
         </div>
       ) : (
         <>
@@ -93,6 +96,7 @@ function App() {
               path={`/${HASHED_INELIGIBLE_ROUTE}`}
               element={<Ineligible />}
             />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
           <ToastContainer />
         </>

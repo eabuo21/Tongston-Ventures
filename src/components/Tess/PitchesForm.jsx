@@ -366,7 +366,7 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              Founder's Profile:
+              Founder/Co-Founder's Profile:
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
@@ -376,7 +376,7 @@ const PitchesForm = ({ onClose }) => {
             <textarea
               type="text"
               name="founder_profile_link"
-              placeholder="Profile"
+              placeholder="Profile/Profile Links"
               value={values.founder_profile_link}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -423,7 +423,7 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              What is The Company's Mission and Vision
+              What is the Company's Mission and Vision
             </p>
             <textarea
               type="text"
@@ -442,7 +442,7 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              Location(s) of operation for your business [List your operational
+              Location(s) of operation for your Business [List your operational
               locations (city)]
             </p>
             <textarea
@@ -458,7 +458,7 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              Business Commenced Year?:
+              Year of Business Commencement ?:
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
@@ -467,7 +467,7 @@ const PitchesForm = ({ onClose }) => {
             <input
               type="number"
               name="operation_commence_year"
-              placeholder="Business Commenced? "
+              placeholder="Year of Business Commencement "
               value={values.operation_commence_year}
               onChange={handleChange}
               className="w-full h-[40px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -481,7 +481,7 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              Where can we find your business online? (Website - If you do not
+              Where can we find your Business online? (Website - If you do not
               have any, state "NONE")
             </p>
             <textarea
@@ -501,7 +501,7 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              Where can we find your business online? (Facebook / Instagram - If
+              Where can we find your Business online? (Facebook / Instagram - If
               you do not have any, state "NONE")
             </p>
             <textarea
@@ -623,10 +623,10 @@ const PitchesForm = ({ onClose }) => {
             </h6>
             <p className="text-[10px] text-gray">
               Describe Your Products and Services Attach an online link to your
-              products and services (e.g. Twitter, WHatsapp, Selar, Facebook
-              etc), OR pictures of the products and services if not available
-              onlin for Images, Please store in a cloud Storage and Share Link
-              here
+              products and services (e.g. X-Formerly-Twitter, WHatsapp, Selar,
+              Facebook etc), OR pictures of the products and services if not
+              available online. For Images, Please upload to a cloud storage and
+              share link here
             </p>
             <textarea
               type="text"
@@ -664,7 +664,7 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              What Sales Channel are You Using to Reach Them?
+              What sales channel are You using to reach them?
             </p>
             <input
               type="text"
@@ -698,7 +698,7 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1 ">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              Who are Your Main Competitors?:
+              Who are your main competitors?:
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
@@ -709,7 +709,7 @@ const PitchesForm = ({ onClose }) => {
             <textarea
               type="text"
               name="main_competitors_description"
-              placeholder="Number of Customers "
+              placeholder="Competitors "
               value={values.main_competitors_description}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -730,7 +730,7 @@ const PitchesForm = ({ onClose }) => {
             <textarea
               type="text"
               name="unique_usp_description"
-              placeholder="Number of Customers "
+              placeholder="Selling Proposition "
               value={values.unique_usp_description}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -777,7 +777,7 @@ const PitchesForm = ({ onClose }) => {
             <textarea
               type="text"
               name="addressing_sdg"
-              placeholder="Number of Customers "
+              placeholder="Describe "
               value={values.addressing_sdg}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -791,8 +791,7 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              Has your business previously received funding? Yes / No If yes,
-              what type?
+              Has your Business previously received funding? Yes / No?
             </p>
             <select
               value={received_funding}
@@ -838,7 +837,7 @@ const PitchesForm = ({ onClose }) => {
             <textarea
               type="text"
               name="looking_to_raise"
-              placeholder="Amount to Raise "
+              placeholder="Amount to raise "
               value={values.looking_to_raise}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -848,7 +847,7 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1 ">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              What are your immediate needs? What will you spend the Money on:{" "}
+              What are your immediate needs? What will you spend the Money on?:{" "}
               <span className="text-red font-bold text-sm">*</span>
             </h6>
 
@@ -871,13 +870,13 @@ const PitchesForm = ({ onClose }) => {
             <p className="text-[10px] text-gray">
               Please upload a 2-minute video. Please make sure you find a clear
               background; no background noise; clear camera, Upload to a Cloud
-              Storage and Share Link to Video here!
+              Storage and Share link to Video here!
             </p>
 
             <textarea
               type="text"
               name="why_selected"
-              placeholder="url "
+              placeholder=" Video url "
               value={values.why_selected}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"

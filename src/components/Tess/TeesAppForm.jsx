@@ -334,7 +334,7 @@ function MyForm({ onClose }) {
           </label>
 
           <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
-            <p className="text-dark text-sm    ">How Did You Hear About Us?</p>
+            <p className="text-dark text-sm    ">How did you hear about us?</p>
             <select
               className="w-full h-[30px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:text-sm"
               name="dropdown_1"
@@ -386,7 +386,7 @@ function MyForm({ onClose }) {
 
           <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              What is Your Current role in the Business?
+              What is your current role in the Business?
             </p>
             <select
               value={selectedOption2}
@@ -522,7 +522,7 @@ function MyForm({ onClose }) {
 
           <label className=" mr-auto flex flex-col gap-2 w-[300px]  md:w-full">
             <p className="text-dark text-sm    ">
-              Please select the currency of your business operations what
+              Please select the currency of your Business operations what
               represents the sales/revenue range you selected
             </p>
             <select
