@@ -6,10 +6,20 @@ import {
 } from "../Notification/Notification";
 import { CircleLoader } from "react-spinners";
 import emailjs from "@emailjs/browser";
+import { FocusModall } from "./FocusModall";
 
 function MyForm({ onClose }) {
   //function to disable scroll on modal toggle
   useEffect(() => {}, []);
+
+  const [isfocusopen, setIsFocusOpen] = useState(false);
+  const openFocus = () => {
+    setIsFocusOpen(true);
+  };
+
+  const closeFocus = () => {
+    setIsFocusOpen(false);
+  };
 
   //hashing the routes
   const HASHED_INELIGIBLE_ROUTE =
@@ -285,6 +295,13 @@ function MyForm({ onClose }) {
           <span className="text-red"> TEES 2024 </span>Entrepreneurial Pitches
           Eligibility Check
         </h6>
+        <button
+          onClick={() => openFocus()}
+          className="focus-sectors-button hover:bg-red hover:bg-opacity-40 hover:transition transform hover:text-white rounded-md border-b-2 border-b-gold flex justify-center items-center w-[300px] p-2"
+        >
+          Focus Sectors - Eligibility Criteria
+        </button>
+        {isfocusopen && <FocusModall onClose={() => closeFocus()} />}
         <button onClick={onClose} className="text-dark text-xl mx-auto mr-5">
           Close
         </button>
@@ -583,42 +600,63 @@ function MyForm({ onClose }) {
           {/* concent declaration */}
           <label
             htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  md:w-full"
+            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-[300px]  justify-center items-center md:w-full"
           >
             <input
               type="checkbox"
               id="chk1"
               checked={checked}
               onChange={() => setChecked(!checked)}
-              className=" cursor-pointer"
+              className=" cursor-pointer h-[20px] mx-auto flex w-[20px] mx-auto flex"
             />
-            <p className="h-[400px] overflow-y-auto     md:h-[200px] text-base p-2">
-              I hereby declare and confirm the following statements in relation
-              to my submission for the TEES 2024 Entrepreneurial Pitches
-              eligibility check: 1. I affirm that I am the rightful owner of all
-              intellectual property associated with my submission, and I have
-              the authority to submit it for consideration.
-              <br />I certify that my responses do not violate any sanctions,
-              laws, or legislations in my jurisdiction, the Federal Republic of
-              Nigeria, or any other jurisdiction worldwide.
-              <br />I certify that my responses do not violate any sanctions,
-              laws, or legislations in my jurisdiction, the Federal Republic of
-              Nigeria, or any other jurisdiction worldwide.
-              <br />I understand that failure to follow the instructions
-              strictly may lead to disqualification.
-              <br />I have the necessary authority to submit answers to this
-              eligibility check on behalf of the organization herewith named in
-              this submission.
-              <br />I confirm that the business herewith mentioned does not
-              negatively impact any of the 17 sustainable development goals
-              (SDGs).
-              <br />I confirm that my responses are true and correct, and I have
-              not misrepresented.
-              <br />I confirm that I understand that I may not progress to the
-              application form if I fail to pass the eligibility check, and that
-              Tongston does not owe me a right of reply or appeal.
-              <br />I confirm that I may only submit responses to the
-              eligibility check once for every business
+            <p className="h-[400px] overflow-y-auto     md:h-[200px] text-sm p-2">
+              <ul className="list-disc flex flex-col gap-4">
+                <li>
+                  I hereby declare and confirm the following statements in
+                  relation to my submission for the TEES 2024 Entrepreneurial
+                  Pitches eligibility check: 1. I affirm that I am the rightful
+                  owner of all intellectual property associated with my
+                  submission, and I have the authority to submit it for
+                  consideration.
+                </li>
+                <li>
+                  I certify that my responses do not violate any sanctions,
+                  laws, or legislations in my jurisdiction, the Federal Republic
+                  of Nigeria, or any other jurisdiction worldwide.
+                </li>
+                <li>
+                  I certify that my responses do not violate any sanctions,
+                  laws, or legislations in my jurisdiction, the Federal Republic
+                  of Nigeria, or any other jurisdiction worldwide.
+                </li>
+                <li>
+                  I understand that failure to follow the instructions strictly
+                  may lead to disqualification.
+                </li>
+                <li>
+                  I have the necessary authority to submit answers to this
+                  eligibility check on behalf of the organization herewith named
+                  in this submission.
+                </li>
+                <li>
+                  I confirm that the business herewith mentioned does not
+                  negatively impact any of the 17 sustainable development goals
+                  (SDGs).
+                </li>
+                <li>
+                  I confirm that my responses are true and correct, and I have
+                  not misrepresented.
+                </li>
+                <li>
+                  I confirm that I understand that I may not progress to the
+                  application form if I fail to pass the eligibility check, and
+                  that Tongston does not owe me a right of reply or appeal.
+                </li>
+                <li>
+                  I confirm that I may only submit responses to the eligibility
+                  check once for every business
+                </li>
+              </ul>
             </p>
           </label>
 

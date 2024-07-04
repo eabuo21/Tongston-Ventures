@@ -458,7 +458,7 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              Year of Business Commencement ?:
+              Business Commencement Year:
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
@@ -501,8 +501,10 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              Where can we find your Business online? (Facebook / Instagram - If
-              you do not have any, state "NONE")
+              Where can we find your business online? (Facebook / Instagram /
+              Linkedin / Website / Youtube / TikTok / X - If you do not have
+              any, state "NONE". If you have multiple, state all of them with
+              their links)
             </p>
             <textarea
               type="url"
@@ -575,7 +577,7 @@ const PitchesForm = ({ onClose }) => {
 
                 <label className=" flex flex-col gap-4 justify-start items-start p-1">
                   <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-                    Registration Date?:
+                    Registration Date:
                     <span className="text-red font-bold text-sm">*</span>
                   </h6>
                   <p className="text-[10px] text-gray">
@@ -596,7 +598,7 @@ const PitchesForm = ({ onClose }) => {
 
                 <label className=" flex flex-col gap-4 justify-start items-start p-1">
                   <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-                    Country of Incorporation ?:
+                    Country of Incorporation :
                     <span className="text-red font-bold text-sm">*</span>
                   </h6>
 
@@ -622,11 +624,12 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              Describe Your Products and Services Attach an online link to your
-              products and services (e.g. X-Formerly-Twitter, WHatsapp, Selar,
-              Facebook etc), OR pictures of the products and services if not
-              available online. For Images, Please upload to a cloud storage and
-              share link here
+              Describe each of your Products and Services. Once done, please
+              include an online link to your products and services (e.g.
+              Twitter, Jumia, Konga, Amazon, Selar, Facebook, Website, Whatsapp
+              Catalog, etc.) OR pictures/videos of the products and services if
+              not available online. Please store in a cloud Storage and Share
+              the Link here
             </p>
             <textarea
               type="text"
@@ -723,14 +726,14 @@ const PitchesForm = ({ onClose }) => {
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              What is your unique selling proposition (USP)? What’s new about
-              what you’re doing? [Describe what features or benefits
-              differentiate you from the competitors and existing solutions?]
+              What is your unique selling position (USP)? What’s new about what
+              you’re doing? [Describe what features or benefits differentiate
+              you from the competitors and existing solutions?]
             </p>
             <textarea
               type="text"
               name="unique_usp_description"
-              placeholder="Selling Proposition "
+              placeholder="Unique Selling Position "
               value={values.unique_usp_description}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -768,16 +771,16 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1 ">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              UNSDG Goals:
+              UN SDG Goals:
               <span className="text-red font-bold text-sm">*</span>
             </h6>
             <p className="text-[10px] text-gray">
-              How are you addressing the UN-SDG goal selected
+              How are you addressing the UN-SDG goal(s) selected
             </p>
             <textarea
               type="text"
               name="addressing_sdg"
-              placeholder="Describe "
+              placeholder="description of how SDG is being met "
               value={values.addressing_sdg}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
@@ -830,10 +833,13 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1 ">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              How much are you looking to raise for your immediate needs?
+              How much are you looking to raise for your immediate Needs?
               <span className="text-red font-bold text-sm">*</span>
             </h6>
-
+            <p className="text-[10px] text-gray">
+              {" "}
+              Please include the currency e.g. US$10,000 or EGP150,000"
+            </p>
             <textarea
               type="text"
               name="looking_to_raise"
@@ -847,13 +853,13 @@ const PitchesForm = ({ onClose }) => {
 
           <label className=" flex flex-col gap-4 justify-start items-start p-1 ">
             <h6 className="text-gray font-semibold text-[12px] flex justify-center items-center">
-              What are your immediate needs? What will you spend the Money on?:{" "}
-              <span className="text-red font-bold text-sm">*</span>
+              What are your immediate Needs? What will you spend the funds
+              raised on?: <span className="text-red font-bold text-sm">*</span>
             </h6>
 
             <textarea
               type="text"
-              name="immediate_needs"
+              name="describe"
               placeholder="intermediate Needs "
               value={values.immediate_needs}
               onChange={handleChange}
@@ -893,175 +899,224 @@ const PitchesForm = ({ onClose }) => {
 
           <label
             htmlFor="terms"
-            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-full   md:w-full"
+            className="text-[12px] font-sans text-gray text-left flex flex-row gap-2 w-full  justify-center items-center md:w-full"
           >
             <input
               type="checkbox"
               checked={agreed}
               onChange={() => setAgreed(!agreed)}
-              className=" cursor-pointer"
+              className=" cursor-pointer h-[20px] mx-auto flex w-[20px] mx-auto flex"
             />
-            <p className="h-[300px] p-3 text-base overflow-y-auto">
-              I hereby declare and confirm the following statements in relation
-              to my submission for the TEES 2024 Entrepreneurial Pitches,
-              scheduled for November 30, 2024.
-              <br />
-              I acknowledge and accept the reputational risks associated with my
-              submission and participation in the TEES 2024 Entrepreneurial
-              Pitches.
-              <br />
-              I affirm that I am the rightful owner of all intellectual property
-              associated with my submission, and I have the authority to submit
-              it for consideration. My submission does not violate any
-              sanctions, laws, or legislations in any jurisdiction worldwide.
-              <br />
-              I declare that I am not associated with any criminal activity or
-              anti-money laundering schemes and have the necessary authorization
-              and capacity to make this submission.
-              <br />
-              I confirm that I am of sound mental and physical health, fully
-              capable of participating in this competition and fulfilling all
-              subsequent obligations.
-              <br />
-              I understand and accept the terms of the TEES 2024 Entrepreneurial
-              Pitches, including the competition process, obligations, and
-              nature of the prizes. Participation does not guarantee a prize,
-              and the organizers are under no obligation to provide direct
-              feedback or information regarding the status of my submission.
-              <br />
-              I agree to adhere to all rules, guidelines, and deadlines
-              established by the TEES 2024 Entrepreneurial Pitches organizers
-              throughout the competition.
-              <br />
-              I understand that any misrepresentation or falsification of
-              information in my submission may lead to disqualification from the
-              competition. The organizers have the right to disqualify any
-              participant found to be in violation of the competition's rules or
-              engaged in unethical conduct.
-              <br />
-              I grant the organizers of the TEES 2024 Entrepreneurial Pitches
-              the right to use my name, likeness, and submission materials for
-              promotional and publicity purposes related to the competition. My
-              participation does not create any partnership, joint venture, or
-              employment relationship with the organizers.
-              <br />
-              I agree to keep confidential any sensitive information or trade
-              secrets shared during the competition, whether from other
-              participants or the organizers. I am not under any contractual or
-              legal obligations that would prevent me from participating in the
-              TEES 2024 Entrepreneurial Pitches or accepting any potential
-              prizes.
-              <br />
-              If selected as a finalist or winner, I may be required to provide
-              additional documentation or information to verify the accuracy of
-              my submission. I acknowledge that aspects of the competition may
-              be conducted by a third party duly appointed by Tongston, and I
-              agree to oblige and participate in the process as necessary.
-              <br />
-              I have read and understood the terms and conditions of the
-              non-disclosure agreement provided herewith and agree to abide by
-              any relevant policies and procedures of Tongston.
-              <br />
-              There is no application fee for this competition. Anyone
-              purporting to collect an application fee is not associated with
-              Tongston and should be reported to t-ventures@tongston.com,
-              copying lprg@tongston.com. Tongston does not owe a duty to take
-              action on any fraudulent matters that may affect me. It is my
-              responsibility to be vigilant, read all relevant terms and
-              conditions, and provide information only as presented or
-              requested.
-              <br />
-              Tongston reserves the right to conduct further due diligence and
-              Know Your Customer (KYC) checks on me, my submissions, my team,
-              and any other affiliates or third parties associated with my
-              submission. Any additional information required for due diligence
-              will be at my cost. I must make myself available throughout the
-              competition process to ensure that any information is adequately
-              reviewed.
-              <br />
-              I agree to provide Portfolio Reporting, including information,
-              testimonials, and any relevant details pertaining to my
-              submission, my business, or organization, or myself, whether I win
-              the prize or not. I authorize Tongston to retain my information
-              for marketing purposes. Tongston reserves the right to use the
-              information provided by me to pre-register me for events or
-              activities organized by the Tongston group of companies or to
-              share my information for marketing purposes by Tongston or its
-              affiliates or partners.
-              <br />
-              Tongston shall be granted the right of first refusal to acquire a
-              significant minority of the company's equity at par. Additionally,
-              they will have the primary responsibility as the lead arranger for
-              equity, debt, quasi-equity, and other financial instruments within
-              the company's capital structure, as well as for its associated
-              products and services.
-              <br />
-              Tongston can take action should I not fulfill all the terms and
-              conditions required by the rules and regulations stipulated for
-              the prizes and/or any further documentation that is signed at a
-              later date. This may include legal action or other remedial
-              actions. If Tongston chooses not to take any action, it is not a
-              waiver of Tongston's rights, and Tongston may do so at a later
-              date if required.
-              <br />
-              I will hold Tongston harmless and indemnify Tongston for any
-              losses, issues, or damages that Tongston may face as a result of
-              my not abiding by the terms and conditions or breaching any of the
-              terms and conditions as applicable. Tongston reserves the right to
-              take action accordingly. If Tongston has to do so, it is not a
-              waiver of Tongston's rights.
-              <br />
-              In the event that Tongston is unable to provide the specified
-              prizes, benefits, or services in full or in part due to unforeseen
-              circumstances, including but not limited to force majeure events,
-              technical or technological difficulties, man-made difficulties, or
-              acts of God, Tongston will not be held liable for any such
-              inability or its consequences. Tongston will make reasonable
-              efforts to provide the benefits and services to the fullest extent
-              possible. If I am unable to claim or fully enjoy the benefits due
-              to any reasons beyond Tongston's control, it is my responsibility
-              to manage and accept such limitations.
-              <br />
-              Tongston shall not be responsible for any losses, unmet
-              expectations, or outcomes arising from my participation in TEES,
-              entrepreneurial pitches, or any other related activities,
-              products, or services. Tongston and its affiliates or partners
-              reserve the right to charge an appropriate fee for the continuing
-              enjoyment of its products and services, whether it is in
-              connection with the TEES 2024 Entrepreneurial Pitches submissions
-              or any other engagements with me. Tongston is under no obligation
-              to provide any of its products and services for free or at a
-              discount.
-              <br />
-              Failure to follow the instructions strictly may lead to
-              disqualification.
-              <br />
-              I have the necessary authority to submit an application on behalf
-              of the organization named in this application. The business
-              mentioned does not negatively impact any of the 17 sustainable
-              development goals (SDGs). I will be required to provide further
-              information at the due diligence stage to verify the information
-              shared and provide additional information/documentation as
-              required. This may include physical searches, verification of
-              business, interviews, other enquiries, including interviews with
-              stakeholders, customers, funders, partners, and others.
-              <br />I have read, accepted, and understood the terms and
-              conditions for participating in the Tongston Entrepreneurial
-              Education Summit (TEES) and TEES Entrepreneurial Pitches. I commit
-              to abide by the rules and guidelines set forth for the TEES 2024
-              Entrepreneurial Pitches and accept the outcomes of the
-              competition, whether successful or not.
-              <label className="flex flex-col gap-2 relative top-7">
-                <p className="text-sm">Signature</p>
-                <input
-                  type="text"
-                  name="signature"
-                  value={values.signature}
-                  onChange={handleChange}
-                  className=""
-                  placeholder="Use You Legal name"
-                />
-              </label>
+            <p className="h-[300px] p-3 text-sm overflow-y-auto">
+              <ul className="list-disc flex flex-col gap-4">
+                <li>
+                  I hereby declare and confirm the following statements in
+                  relation to my submission for the TEES 2024 Entrepreneurial
+                  Pitches, scheduled for November 30, 2024.
+                </li>
+                <li>
+                  I acknowledge and accept the reputational risks associated
+                  with my submission and participation in the TEES 2024
+                  Entrepreneurial Pitches.
+                </li>
+                <li>
+                  I affirm that I am the rightful owner of all intellectual
+                  property associated with my submission, and I have the
+                  authority to submit it for consideration. My submission does
+                  not violate any sanctions, laws, or legislations in any
+                  jurisdiction worldwide.
+                </li>
+                <li>
+                  I declare that I am not associated with any criminal activity
+                  or anti-money laundering schemes and have the necessary
+                  authorization and capacity to make this submission.
+                </li>
+                <li>
+                  I confirm that I am of sound mental and physical health, fully
+                  capable of participating in this competition and fulfilling
+                  all subsequent obligations.
+                </li>
+                <li>
+                  I understand and accept the terms of the TEES 2024
+                  Entrepreneurial Pitches, including the competition process,
+                  obligations, and nature of the prizes. Participation does not
+                  guarantee a prize, and the organizers are under no obligation
+                  to provide direct feedback or information regarding the status
+                  of my submission.
+                </li>
+                <li>
+                  I agree to adhere to all rules, guidelines, and deadlines
+                  established by the TEES 2024 Entrepreneurial Pitches
+                  organizers throughout the competition.
+                </li>
+                <li>
+                  I understand that any misrepresentation or falsification of
+                  information in my submission may lead to disqualification from
+                  the competition. The organizers have the right to disqualify
+                  any participant found to be in violation of the competition's
+                  rules or engaged in unethical conduct.
+                </li>
+                <li>
+                  I grant the organizers of the TEES 2024 Entrepreneurial
+                  Pitches the right to use my name, likeness, and submission
+                  materials for promotional and publicity purposes related to
+                  the competition. My participation does not create any
+                  partnership, joint venture, or employment relationship with
+                  the organizers.
+                </li>
+                <li>
+                  I agree to keep confidential any sensitive information or
+                  trade secrets shared during the competition, whether from
+                  other participants or the organizers. I am not under any
+                  contractual or legal obligations that would prevent me from
+                  participating in the TEES 2024 Entrepreneurial Pitches or
+                  accepting any potential prizes.
+                </li>
+                <li>
+                  If selected as a finalist or winner, I may be required to
+                  provide additional documentation or information to verify the
+                  accuracy of my submission. I acknowledge that aspects of the
+                  competition may be conducted by a third party duly appointed
+                  by Tongston, and I agree to oblige and participate in the
+                  process as necessary.
+                </li>
+                <li>
+                  I have read and understood the terms and conditions of the
+                  non-disclosure agreement provided herewith and agree to abide
+                  by any relevant policies and procedures of Tongston.
+                </li>
+
+                <li>
+                  There is no application fee for this competition. Anyone
+                  purporting to collect an application fee is not associated
+                  with Tongston and should be reported to
+                  t-ventures@tongston.com, copying lprg@tongston.com. Tongston
+                  does not owe a duty to take action on any fraudulent matters
+                  that may affect me. It is my responsibility to be vigilant,
+                  read all relevant terms and conditions, and provide
+                  information only as presented or requested.
+                </li>
+
+                <li>
+                  Tongston reserves the right to conduct further due diligence
+                  and Know Your Customer (KYC) checks on me, my submissions, my
+                  team, and any other affiliates or third parties associated
+                  with my submission. Any additional information required for
+                  due diligence will be at my cost. I must make myself available
+                  throughout the competition process to ensure that any
+                  information is adequately reviewed.
+                </li>
+
+                <li>
+                  I agree to provide Portfolio Reporting, including information,
+                  testimonials, and any relevant details pertaining to my
+                  submission, my business, or organization, or myself, whether I
+                  win the prize or not. I authorize Tongston to retain my
+                  information for marketing purposes. Tongston reserves the
+                  right to use the information provided by me to pre-register me
+                  for events or activities organized by the Tongston group of
+                  companies or to share my information for marketing purposes by
+                  Tongston or its affiliates or partners.
+                </li>
+
+                <li>
+                  Tongston shall be granted the right of first refusal to
+                  acquire a significant minority of the company's equity at par.
+                  Additionally, they will have the primary responsibility as the
+                  lead arranger for equity, debt, quasi-equity, and other
+                  financial instruments within the company's capital structure,
+                  as well as for its associated products and services.
+                </li>
+
+                <li>
+                  Tongston can take action should I not fulfill all the terms
+                  and conditions required by the rules and regulations
+                  stipulated for the prizes and/or any further documentation
+                  that is signed at a later date. This may include legal action
+                  or other remedial actions. If Tongston chooses not to take any
+                  action, it is not a waiver of Tongston's rights, and Tongston
+                  may do so at a later date if required.
+                </li>
+
+                <li>
+                  I will hold Tongston harmless and indemnify Tongston for any
+                  losses, issues, or damages that Tongston may face as a result
+                  of my not abiding by the terms and conditions or breaching any
+                  of the terms and conditions as applicable. Tongston reserves
+                  the right to take action accordingly. If Tongston has to do
+                  so, it is not a waiver of Tongston's rights.
+                </li>
+
+                <li>
+                  In the event that Tongston is unable to provide the specified
+                  prizes, benefits, or services in full or in part due to
+                  unforeseen circumstances, including but not limited to force
+                  majeure events, technical or technological difficulties,
+                  man-made difficulties, or acts of God, Tongston will not be
+                  held liable for any such inability or its consequences.
+                  Tongston will make reasonable efforts to provide the benefits
+                  and services to the fullest extent possible. If I am unable to
+                  claim or fully enjoy the benefits due to any reasons beyond
+                  Tongston's control, it is my responsibility to manage and
+                  accept such limitations.
+                </li>
+
+                <li>
+                  Tongston shall not be responsible for any losses, unmet
+                  expectations, or outcomes arising from my participation in
+                  TEES, entrepreneurial pitches, or any other related
+                  activities, products, or services. Tongston and its affiliates
+                  or partners reserve the right to charge an appropriate fee for
+                  the continuing enjoyment of its products and services, whether
+                  it is in connection with the TEES 2024 Entrepreneurial Pitches
+                  submissions or any other engagements with me. Tongston is
+                  under no obligation to provide any of its products and
+                  services for free or at a discount.
+                </li>
+
+                <li>
+                  Failure to follow the instructions strictly may lead to
+                  disqualification.
+                </li>
+
+                <li>
+                  I have the necessary authority to submit an application on
+                  behalf of the organization named in this application. The
+                  business mentioned does not negatively impact any of the 17
+                  sustainable development goals (SDGs). I will be required to
+                  provide further information at the due diligence stage to
+                  verify the information shared and provide additional
+                  information/documentation as required. This may include
+                  physical searches, verification of business, interviews, other
+                  enquiries, including interviews with stakeholders, customers,
+                  funders, partners, and others.
+                </li>
+
+                <li>
+                  I have read, accepted, and understood the terms and conditions
+                  for participating in the Tongston Entrepreneurial Education
+                  Summit (TEES) and TEES Entrepreneurial Pitches. I commit to
+                  abide by the rules and guidelines set forth for the TEES 2024
+                  Entrepreneurial Pitches and accept the outcomes of the
+                  competition, whether successful or not.
+                </li>
+                <label className="flex flex-col gap-2 relative top-7">
+                  <p className="text-sm  flex flex-row gap-2">
+                    Signature
+                    <span className="text-red flex justify-start items-center">
+                      *
+                    </span>{" "}
+                  </p>
+                  <input
+                    type="text"
+                    name="signature"
+                    value={values.signature}
+                    onChange={handleChange}
+                    className=" border border-gold focus:outline-none"
+                    placeholder="Use You Legal Name"
+                  />
+                </label>
+              </ul>
             </p>
           </label>
 
@@ -1079,7 +1134,7 @@ const PitchesForm = ({ onClose }) => {
               }
             }}
           >
-            {loading ? <b>Please Wait...</b> : "Submit"}
+            {loading ? "Please Wait..." : "Submit"}
           </button>
         </form>
       </div>

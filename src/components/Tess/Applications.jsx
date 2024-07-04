@@ -6,6 +6,8 @@ import PitchesForm from "./PitchesForm";
 import Tessflyer from "../../assets/images/TEES Pitches Flyer.png";
 
 function Successful() {
+  // function to toggle the focus-modal
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -31,7 +33,7 @@ function Successful() {
         <p className="text-gray font-normal text-base font-serif text-center w-full    md:text-xl ">
           <b className="text-2xl">Thank you </b>for completing the eligibility
           check for the TEES 2024 Entrepreneurial Pitches! You may now proceed
-          to the application form. <b>Geoduck!</b>
+          to the application form. <b>GoodLuck!</b>
         </p>
         <button
           onClick={() => openModal()}

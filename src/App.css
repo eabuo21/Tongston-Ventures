@@ -62,6 +62,7 @@
 
 /**3D SCALE TRANSITION IN THE forms TABS */
 
+/* Existing scale-in animation */
 @keyframes scaleIn {
   from {
     transform: scale3d(0, 0, 0);
@@ -71,28 +72,30 @@
   }
 }
 
-.form-container {
+/* New scale-out animation */
+@keyframes scaleOut {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  to {
+    transform: scale3d(0, 0, 0);
+  }
+}
+
+/* Default state (scale in) */
+.focus-modall {
   animation: scaleIn 1s ease-in-out;
-  animation-fill-mode: backwards;
-  animation-delay: 0s;
+  animation-fill-mode: forwards;
   transform-origin: bottom center;
 }
 
-@keyframes scaleIn {
-  from {
-    transform: scale3d(0, 0, 0);
-  }
-  to {
-    transform: scale3d(1, 1, 1);
-  }
+/* Closing state (scale out) */
+.focus-modall.closing {
+  animation: scaleOut 1s ease-in-out;
+  animation-fill-mode: forwards;
 }
 
-.terms-container {
-  animation: scaleIn 1s ease-in-out;
-  animation-fill-mode: backwards;
-  animation-delay: 0s;
-  transform-origin: top right;
-}
+
 
 .apply-form,
 .form-container {
