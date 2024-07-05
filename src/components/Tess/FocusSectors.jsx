@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-export const FocusModall = ({ onClose }) => {
+const FocSectors = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [showScrollDown, setShowScrollDown] = useState(true);
   const contentRef = useRef(null);
@@ -47,7 +47,7 @@ export const FocusModall = ({ onClose }) => {
     >
       <div
         ref={contentRef}
-        className="bg-white rounded-md w-full h-[400px] overflow-y-auto p-2 flex flex-col justify-start items-start md:w-full relative"
+        className="bg-white rounded-md w-full h-[400px] overflow-y-auto p-2 flex flex-col justify-start items-start md:w-[700px] md:mx-auto relative"
       >
         <button
           onClick={handleClose}
@@ -78,29 +78,24 @@ export const FocusModall = ({ onClose }) => {
             </button>
           )}
           <h6 className="text-base  text-gray font-bold  md:text-xl  ">
-            Eligibility Criteria{" "}
+            Sectors of Focus
           </h6>
           <l className="list-decimal-zero flex flex-col gap-5 justify-start items-start py-2 text-base md:text-xl">
-            <li>
-              The business must be an early-stage or mid-stage business (micro /
-              nano business)
-            </li>
-            <li>The business must have early revenues</li>
-            <li>The business must be based in Africa</li>
-            <li>The business must be within the focus sectors</li>
-            <li>
-              The business must meet at least 1 sustainable development goal
-              (SDG) and must not negatively impact any SDG
-            </li>
-            <li>The applicant must be the founder/co-founder</li>
-            <li>
-              The applicant must possess the necessary authority to submit an
-              application on behalf of their respective organizations or legal
-              entities
-            </li>
+            <li> Education</li>
+            <li>Financial-Services</li>
+            <li>Health-&-Life-Sciences</li>
+            <li>Agriculture</li>
+            <li>Sales-&-Business-Development</li>
+            <li>Data-&-Research</li>
+            <li>Technology</li>
+            <li>Legal-&-Governance</li>
+            <li>Trade-&-Industry</li>
+            <li>Telecoms-&-Media</li>
+            <li>Logistics-&-Storage</li>
+            <li>Accounting-&-Finance</li>
           </l>
           <p className="learn more-link text-left text-base flex gap-4 text-gray font-sans py-6 md:text-xl">
-            Visit the TEES2024 website to get started
+            Visit the TEES2024 website to learn more 
             <a
               href="https://tees2024.webflow.io/"
               target="_blank"
@@ -115,3 +110,4 @@ export const FocusModall = ({ onClose }) => {
     </div>
   );
 };
+export default FocSectors;

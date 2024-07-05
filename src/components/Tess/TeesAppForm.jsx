@@ -7,6 +7,7 @@ import {
 import { CircleLoader } from "react-spinners";
 import emailjs from "@emailjs/browser";
 import { FocusModall } from "./FocusModall";
+import FocusSectors from "./FocusSectors";
 
 function MyForm({ onClose }) {
   //function to disable scroll on modal toggle
@@ -19,6 +20,15 @@ function MyForm({ onClose }) {
 
   const closeFocus = () => {
     setIsFocusOpen(false);
+  };
+
+  // focus sectors modl
+  const [sectors, setSectors] = useState(false);
+  const openSectors = () => {
+    setSectors(true);
+  };
+  const closeSectors = () => {
+    setSectors(false);
   };
 
   //hashing the routes
@@ -295,12 +305,22 @@ function MyForm({ onClose }) {
           <span className="text-red"> TEES 2024 </span>Entrepreneurial Pitches
           Eligibility Check
         </h6>
-        <button
-          onClick={() => openFocus()}
-          className="focus-sectors-button hover:bg-red hover:bg-opacity-40 hover:transition transform hover:text-white rounded-md border-b-2 border-b-gold flex justify-center items-center w-[300px] p-2"
-        >
-          Focus Sectors - Eligibility Criteria
-        </button>
+
+        <section className="flex flex-row gap-4 justify-start items-start ">
+          <button
+            onClick={() => openSectors()}
+            className="focus-sectors-button hover:bg-red hover:bg-opacity-40 hover:transition transform hover:text-white rounded-md border-b-2 border-b-gold flex justify-center items-center w-[fixed] p-2"
+          >
+            Focus Sectors
+          </button>
+          {sectors && <FocusSectors onClose={() => closeSectors()} />}
+          <button
+            onClick={() => openFocus()}
+            className="focus-sectors-button hover:bg-red hover:bg-opacity-40 hover:transition transform hover:text-white rounded-md border-b-2 border-b-gold flex justify-center items-center w-[fixed] p-2"
+          >
+            Eligibility Criteria
+          </button>
+        </section>
         {isfocusopen && <FocusModall onClose={() => closeFocus()} />}
         <button onClick={onClose} className="text-dark text-xl mx-auto mr-5">
           Close
@@ -358,6 +378,7 @@ function MyForm({ onClose }) {
               onChange={valuesChange}
               value={values.dropdown_1}
             >
+               <option value="" disabled> Select an Option</option>
               <option value="Blog">Blog</option>
               <option value="Linkedin Post">Linkedin Post</option>
               <option value="Linkedin Group">Linkedin Group</option>
@@ -548,6 +569,7 @@ function MyForm({ onClose }) {
               onChange={valuesChange}
               value={values.primary_currency}
             >
+               <option value="" disabled> Select an Option</option>
               <option value="US$">US$</option>
               <option value="GBP">British Pound (GBP)</option>
               <option value="CFA Franc">CFA Franc</option>
