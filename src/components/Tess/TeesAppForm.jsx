@@ -321,10 +321,19 @@ function MyForm({ onClose }) {
             Eligibility Criteria
           </button>
         </section>
+        <section className="held-desk-section flex justify-center items0center px-3 mx-auto">
+          <p className="text-black font-sans text-xl   md:tex-xl">
+            Any Issues Applying?, contact <a href="mailto: it@tongston.com"style={{
+              color: "blue",
+              textDecoration: "underline"
+            }}> it@tongston.com</a>
+          </p>
+        </section>
         {isfocusopen && <FocusModall onClose={() => closeFocus()} />}
         <button onClick={onClose} className="text-dark text-xl mx-auto mr-5">
           Close
         </button>
+
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-6 justify-center items-center w-full md:gap-7 md:justify-center md:items-center  md:px-8 md:grid md:grid-cols-2 "

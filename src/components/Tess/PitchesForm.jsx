@@ -282,6 +282,14 @@ const PitchesForm = ({ onClose }) => {
         >
           close
         </button>
+        <section className="held-desk-section flex justify-center items0center px-3 mx-auto">
+          <p className="text-black font-sans text-xl   md:tex-xl">
+            Any Issues Applying?, contact <a href="mailto: it@tongston.com"style={{
+              color: "blue",
+              textDecoration: "underline"
+            }}> it@tongston.com</a>
+          </p>
+        </section>
         <h5 className="text-center text-base text-gray font-dm font-bold   md:text-xl">
           <span className="text-red text-2xl">TEES 2024 </span>Entrepreneurial
           Pitches Application
@@ -859,8 +867,8 @@ const PitchesForm = ({ onClose }) => {
 
             <textarea
               type="text"
-              name="describe"
-              placeholder="intermediate Needs "
+              name="immediate_needs"
+              placeholder="immediate Needs "
               value={values.immediate_needs}
               onChange={handleChange}
               className="w-full h-[60px] p-1 px-2 text-sm  text-gray  border-l-2   border-l-red   border-b-2 border-b-gray border-r-2  border-r-red  focus:outline-none  md:w-full  md:h-[40px] md:text-sm"
