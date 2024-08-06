@@ -956,7 +956,7 @@ function MyForm({ onClose }) {
   
       Thank you for completing the eligibility check for the TEES 2024 Entrepreneurial Pitches! You may
       now proceed to the application by clicking the link below:
-     https://t-ventures.tongston.com/4fbdce769f4bfaa74c9f5fc9e593e3a7bf781f_espx*_1yfthg.
+     https://t-ventures.tongston.com/7fbdce769f4bfaa74c9f5fc9e593e3a7bf781f_espx
   
       Should you have any queries or require any assistance, please contact us via email at it@tongston.com`
 

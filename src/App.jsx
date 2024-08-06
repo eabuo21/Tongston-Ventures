@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -17,13 +17,14 @@ import PitchesForm from "./components/Tess/PitchesForm";
 
 const HASHED_INELIGIBLE_ROUTE =
   "d8e23981a7d2de3c0f3a2d3f02f823b7a514889a04ec843d0907f10b0389bc2a";
+
 const HASHED_APPLICATIONS_ROUTE =
   "56f1c75521d58a3b4cc7c05615353673a2e1f55d5e5aaed0e1c9915a3a64d47e";
 
 const HASHED_SUCCESS_ROUTE =
   "4fbdce769f4bfaa74c9f5fc9e593e3a7bf781f64bf16fb1b9b2a3a4466795373";
-const HASHED_PITCH_FORM_ROUTE =
-  "4fbdce769f4bfaa74c9f5fc9e593e3a7bf781f_espx*_1yfthg";
+
+const HASHED_PITCH_FORM_ROUTE = "7fbdce769f4bfaa74c9f5fc9e593e3a7bf781f_espx";
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -35,7 +36,7 @@ function App() {
   };
 
   const simulateWebsiteLoading = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, ) => {
       setTimeout(() => {
         resolve();
       }, 2000);
@@ -91,6 +92,7 @@ function App() {
             <Route path="/investment" element={<Investment />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/business" element={<Business />} />
+            
             <Route path={`/${HASHED_SUCCESS_ROUTE}`} element={<Success />} />
             <Route
               path={`/${HASHED_APPLICATIONS_ROUTE}`}
@@ -100,10 +102,8 @@ function App() {
               path={`/${HASHED_INELIGIBLE_ROUTE}`}
               element={<Ineligible />}
             />
-            <Route
-              path={`/${HASHED_PITCH_FORM_ROUTE}`}
-              element={<PitchesForm />}
-            />
+           <Route 
+           path={`/${HASHED_PITCH_FORM_ROUTE}`} element={<PitchesForm/>}/>
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <ToastContainer />
