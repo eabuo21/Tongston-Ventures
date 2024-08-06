@@ -13,6 +13,7 @@ import Success from "./components/Tess/Success";
 import Applications from "./components/Tess/Applications";
 import Ineligible from "./components/Tess/Ineligible";
 import Scroll from "./components/Tess/ScrolltoBttom";
+import PitchesForm from "./components/Tess/PitchesForm";
 
 const HASHED_INELIGIBLE_ROUTE =
   "d8e23981a7d2de3c0f3a2d3f02f823b7a514889a04ec843d0907f10b0389bc2a";
@@ -21,6 +22,8 @@ const HASHED_APPLICATIONS_ROUTE =
 
 const HASHED_SUCCESS_ROUTE =
   "4fbdce769f4bfaa74c9f5fc9e593e3a7bf781f64bf16fb1b9b2a3a4466795373";
+const HASHED_PITCH_FORM_ROUTE =
+  "4fbdce769f4bfaa74c9f5fc9e593e3a7bf781f_espx*_1yfthg";
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -97,10 +100,14 @@ function App() {
               path={`/${HASHED_INELIGIBLE_ROUTE}`}
               element={<Ineligible />}
             />
+            <Route
+              path={`/${HASHED_PITCH_FORM_ROUTE}`}
+              element={<PitchesForm />}
+            />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <ToastContainer />
-          <Scroll className="fixed right-4 "/>
+          <Scroll className="fixed right-4 " />
         </>
       )}
     </div>

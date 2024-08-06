@@ -276,12 +276,12 @@ const PitchesForm = ({ onClose }) => {
         data-aos-once="true"
         className="flex flex-col inset-0 z-50 bg-white w-[fixed] h-500px] overflow-y-auto gap-5 justify-start  items-center  rounded-md shadow-md shadow-current       md:w-[900px] md:h-[600px]"
       >
-        <button
+        {/* <button
           onClick={onClose}
           className="close-button  flex ml-auto text-gray font-normal text-xl pr-7 pt-4 "
         >
           close
-        </button>
+        </button> */}
         <section className="held-desk-section flex justify-center items0center px-3 mx-auto">
           <p className="text-black font-sans text-xl   md:tex-xl">
             Any Issues Applying?, contact <a href="mailto: it@tongston.com"style={{
