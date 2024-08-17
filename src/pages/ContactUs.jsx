@@ -119,9 +119,9 @@ const Contact = () => {
         <div className="contact">
           <main className="main-contact">
             <div className="get-intouch-section">
-              <h1 className="get-intouch">Let's Get in Touch</h1>
+              <h1 className="get-intouch">Let&apos;s Get in Touch</h1>
               <p className="get-intouch-text">
-                We're glad you are here! Share your details with us to get
+                We&apos;re glad you are here! Share your details with us to get
                 started
               </p>
             </div>
@@ -136,7 +136,7 @@ const Contact = () => {
                         shortly
                       </p>
                     </div>
-                    <div className="contact-number  text-red border-red rounded-lg">
+                    {/* <div className="contact-number  text-red border-red rounded-lg">
                       <span>
                         <FontAwesomeIcon icon={faPhone} Phone-icon />
                       </span>
@@ -145,14 +145,14 @@ const Contact = () => {
                           +2348165602923
                         </a>
                       </span>
-                    </div>
+                    </div> */}
                     <div className="contact-Address">
                       <div className="contact-number">
                         <span className="text-red">
                           <FontAwesomeIcon icon={faMapMarkerAlt} map-icon />
                         </span>
                         <span className="contact-margin">
-                          16 Emeka Anyaoku Street, Area 11 Garki, Abuja
+                          4th Floor, Tower C, Churchgate, Central Business District, Abuja,  Nigeria
                         </span>
                       </div>
                       <div className="adress-magin">

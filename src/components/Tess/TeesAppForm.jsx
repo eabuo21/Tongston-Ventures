@@ -954,12 +954,13 @@ function MyForm({ onClose }) {
     const eligibilityMessage = selectedImportantOptions.every(Boolean)
       ? `Dear ${values.first_name} ${values.last_name},
   
-      Thank you for completing the eligibility check for the TEES 2024 Entrepreneurial Pitches! You may
-      now proceed to the application by clicking the link below:
+      Thank you for completing the eligibility check for the TEES 2024 Entrepreneurial Pitches!
+      You may now proceed to complete the application form to be considered, by clicking the link below:
      https://t-ventures.tongston.com/7fbdce769f4bfaa74c9f5fc9e593e3a7bf781f_espx
   
-      Should you have any queries or require any assistance, please contact us via email at it@tongston.com`
-
+     Should you have any queries or require any assistance, please contact us via email at it@tongston.com.
+    Good luck. We look forward to receiving your application.
+    Regards,`
       : `Dear ${values.first_name} ${values.last_name},
   
       Thank you for completing the eligibility check for the TEES 2024 Entrepreneurial Pitches!
@@ -968,11 +969,10 @@ function MyForm({ onClose }) {
       contact us via email at it@tongston.com`;
 
     try {
-     
       for (let i = 0; i < loadingMessages.length; i++) {
         setTimeout(() => {
           setLoadingMessage(loadingMessages[i]);
-        }, i * 20000); 
+        }, i * 20000);
       }
 
       // Send email
