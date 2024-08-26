@@ -718,7 +718,7 @@
 // }
 
 // export default MyForm;
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   showErrorNotification,
@@ -863,7 +863,7 @@ function MyForm({ onClose }) {
       "Zambia",
       "Zimbabwe",
     ],
-    option5: ["Early-Stage", "Mid-Stage/Growth-Stage"],
+    option5: ["Start-Up","Early-Stage", "Mid-Stage/Growth-Stage"],
     option7: [
       "Less-than-5,000",
       "5001-10,000",
@@ -1241,8 +1241,7 @@ function MyForm({ onClose }) {
               ))}
 
               <option value="Idea-Stage">Idea-Stage</option>
-              <option value="Start-Up">Start-Up</option>
-              <option value="Mature">Mature</option>
+                         <option value="Mature">Mature</option>
             </select>
           </label>
 

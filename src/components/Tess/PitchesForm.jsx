@@ -1127,8 +1127,9 @@ const PitchesForm = ({ onClose }) => {
                     name="signature"
                     value={values.signature}
                     onChange={handleChange}
-                    className=" border border-gold focus:outline-none"
+                    className=" border border-gold focus:outline-none h-[40px]"
                     placeholder="Use You Legal Name"
+                    required
                   />
                 </label>
               </ul>
@@ -1143,7 +1144,7 @@ const PitchesForm = ({ onClose }) => {
             }`}
             onClick={() => {
               if (values.signature === "") {
-                alert("please  read terms and enter your signature");
+                alert("please  read terms and  conditions and enter your signature");
               } else {
                 console.log("signature entered");
               }
